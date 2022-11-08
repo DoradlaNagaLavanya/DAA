@@ -1,0 +1,71 @@
+#include <stdio.h>
+
+
+void mergesort(int a[],int lb,int ub)
+{
+    int mid;
+    if(lb<ub) {
+        mid=(lb+ub)/2;
+        mergesort(a,lb,mid);
+        mergesort(a,mid+1,ub);
+        merge(a,lb,mid,ub);
+    }
+
+}
+void merge(int a[],int lb,int mid,int ub)
+{
+    int i,j,k;
+    i=lb;
+    k=lb;
+    j=mid+1;
+    //int b[100];
+    int b[100000];
+    while(i<=mid && j<=ub)
+    {
+        if(a[i]>a[j]) 
+        {
+            b[k++]=a[j];
+            j++;
+        }
+        else if(a[i]<a[j])
+        {
+            b[k++]=a[i];
+            i++;
+        } else 
+        {
+            b[k++]=a[i];
+            b[k++]=a[i];
+            i++;
+            j++;
+        }
+
+    }
+    if(i>mid)
+    {
+        while(j<=ub)
+        {
+            b[k++]=a[j];
+            j++;
+        }
+    } 
+    else {
+        while(i<=mid) {
+            b[k++]=a[i];
+            i++;
+        }
+
+    }
+    for(i=lb; i<=ub; i++) {
+        a[i]=b[i];
+
+    }
+
+
+}
+
+int* sortArray(int* nums, int numsSize, int*returnSize)
+{
+    mergesort(nums,0,numsSize-1);
+    *returnSize = numsSize;
+    return nums;
+}
