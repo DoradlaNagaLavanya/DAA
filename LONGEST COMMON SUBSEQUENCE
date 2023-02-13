@@ -26,8 +26,8 @@ int main()
 {
 char X[10];
 char Y[10] ;
-scanf("%s",&X);
-scanf("%s",&Y);
+scanf("%s",X);
+scanf("%s",Y);
 int m = strlen(X);
 int n = strlen(Y);
  
