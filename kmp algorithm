@@ -71,8 +71,13 @@ void computeLPSArray(char *pat, int M, int *lps) {
  
 // Driver program to test above function
 int main() {
-    char *txt = "ABABDABACDABABCABAB";
-    char *pat = "ABABCABAB";
+    char s1[20],s2[20];
+    printf("enter text");
+    scanf("%s",s1);
+    char *txt=s1;
+    printf("enter path");
+    scanf("%s",s2);
+    char *pat=s2;
     KMPSearch(pat, txt);
     return 0;
 }
