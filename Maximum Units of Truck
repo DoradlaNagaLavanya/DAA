@@ -1,0 +1,63 @@
+ # include <stdio.h>
+# include <stdlib.h>
+int maxUnits(int **boxTypes,int boxTypessize,int boxTypescolsize,int trucksize)
+{
+    int i,j,s=0,p=0,o;
+    for(i=0;i<boxTypessize-1;i++)
+    {
+        for(j=0;j<boxTypessize-i-1;j++)
+        {
+            if(boxTypes[j][1]<boxTypes[j+1][1])
+            {
+                int c[2];
+                c[0]=boxTypes[j][0];
+                c[1]=boxTypes[j][1];
+                boxTypes[j][0]=boxTypes[j+1][0];
+                boxTypes[j][1]=boxTypes[j+1][1];
+                boxTypes[j+1][0]=c[0];
+                boxTypes[j+1][1]=c[1];
+            }
+        }
+    }
+    for(i=0;i<boxTypessize;i++)
+    {
+        if(trucksize==s)
+        {
+            return p;
+        }
+        else if(boxTypes[i][0]<trucksize-s && s<trucksize)
+        {
+            s=s+boxTypes[i][0];
+            p=p+boxTypes[i][0]*boxTypes[i][1];
+        }
+        else
+        {
+            o=trucksize-s;
+            p=p+boxTypes[i][1]*o;
+            return p;
+        }
+    }
+    return p;
+}
+void main()
+{
+    int row,capacity,result,col;
+    printf("enter the values of row,col,capacity\n");
+    scanf("%d",&row);
+   
+    scanf("%d",&col);
+     scanf("%d",&capacity);
+    int ** box=(int **)malloc(row*sizeof(int*));
+    printf("enter the box array elements:\n");
+    for(int i=0;i<row;i++)
+    {
+        box[i]=(int *)malloc(col*sizeof(int));
+        for(int j=0;j<col;j++)
+        {
+            scanf("%d",&box[i][j]);
+        }
+    }
+    result=maxUnits(box,row,col,capacity);
+    printf("the max capacity of truck is:");
+    printf("%d",result);
+}
