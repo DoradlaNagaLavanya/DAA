@@ -24,9 +24,10 @@ int max(int a, int b)
 /* Driver program to test above function */
 int main()
 {
-char X[] = "AGGTAB";
-char Y[] = "GXTXAYB";
- 
+char X[10];
+char Y[10] ;
+scanf("%s",&X);
+scanf("%s",&Y);
 int m = strlen(X);
 int n = strlen(Y);
  
