@@ -26,8 +26,8 @@ void reverseWords(char* s)
 int main()
 {
     char s[]="a good   example";
-    // printf("enter string");
-    //scanf("%ch",&s)
+     printf("enter string");
+    gets(s);
     char* temp = s;
     reverseWords(s);
     printf("%s", s);
