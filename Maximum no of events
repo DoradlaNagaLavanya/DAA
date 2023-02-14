@@ -60,24 +60,32 @@ int maxEvents(int** events, int eventsSize, int* eventsColSize){
 }
 void main()
 {
-int eventsSize,x=2;
-int* eventsColSize=&x;
-printf("enter total number of events");
+void main()
+{
+int eventsSize;
+//int* eventsColSize=&x;
+int eventsColSize;
+printf("enter total number of rows");
 scanf("%d",&eventsSize);
-int** events=(int*)malloc(eventsSize*sizeof(int));
+printf("enter no of columns");
+scanf("%d",&eventsColSize);
+
+int** events=(int**)malloc(eventsSize*sizeof(int*));
+printf("enter array elements");
 for(int i=0;i<eventsSize;i++)
 {
-events[i]=(int*)malloc(*(eventsColSize)*sizeof(int));
-}
-for(int i=0;i<eventsSize;i++)
-{
-for(int j=0;j<*(eventsColSize);j++)
+events[i]=(int*)malloc((eventsColSize)*sizeof(int));
+
+for(int j=0;j<eventsColSize;j++)
 {
 scanf("%d",&events[i][j]);
 }
 }
 int c=maxEvents(events,eventsSize,eventsColSize);
 printf("Maximum number of events that can be attended is %d",c);
+}
+
+
 }
 
 output:
